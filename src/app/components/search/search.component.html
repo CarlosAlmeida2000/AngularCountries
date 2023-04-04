@@ -1,0 +1,7 @@
+<div class="row w-100 mt-4">
+    <input #termino type="text" (keyup)="buscar(termino.value)" class="form-control" placeholder="Buscar por nombre...">
+</div>
+
+<app-loading class="m-5" *ngIf="loading"></app-loading>
+
+<app-tarjetas *ngIf="!loading" [items]="paises" (eventoActualizar)="getCountries()"></app-tarjetas>

@@ -1,0 +1,37 @@
+<div class="carts-countries">
+    <div *ngFor="let item of items;" class="card cart-country shadow mb-3">
+        <img class="imagen" [src]="item.flags.png" alt="Country">
+        <div class="card-body">
+
+            <div *ngIf="item.name.common; then thenTemplate; else elseTemplate">
+            </div>
+
+            <ng-template #thenTemplate>
+                <h5 class="card-title ">{{ item.name.common }}</h5>
+            </ng-template>
+
+            <ng-template #elseTemplate>
+                <h5 class="card-title ">{{ item.name }}</h5>
+            </ng-template>
+
+
+            <h5 class="card-text">
+                <span class="badge badge-pill badge-primary">
+                                Capital: {{ item.capital }}
+                        </span>
+                <span class="badge badge-pill badge-success mx-1">
+                                Región: {{ item.region }}
+                        </span>
+                <h6 class="mt-2">Población: {{ item.population }}</h6>
+            </h5>
+
+            <div class="favorito">
+
+                <input [checked]="isFavorite(item.capital)" #control (click)="changeFavorite( item.capital, control)" id="country-{{ item.capital }}" type="checkbox">
+                <label for="country-{{ item.capital }}">★</label>
+
+            </div>
+
+        </div>
+    </div>
+</div>
